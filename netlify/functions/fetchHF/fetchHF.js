@@ -5,6 +5,7 @@ const hf = new HfInference(process.env.HF_TOKEN || "")
 const handler = async (event) => {
   try {
     const data = JSON.parse(event.body)
+    console.log(data.text)
     const response = await hf.translation({
       model: "facebook/mbart-large-50-many-to-many-mmt",
       inputs: text,
