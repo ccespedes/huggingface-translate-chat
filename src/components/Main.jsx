@@ -42,7 +42,6 @@ const Main = () => {
 
   async function fetchReply(text, language) {
     const content = { text, language }
-    console.log(content)
     messageDisplayed()
     const url =
       "https://hf-translate-chat.netlify.app/.netlify/functions/fetchHF"
@@ -56,6 +55,7 @@ const Main = () => {
       })
       const data = await response.json()
       console.log(data)
+
       // const response = await hf.translation({
       //   model: "facebook/mbart-large-50-many-to-many-mmt",
       //   inputs: text,
@@ -67,10 +67,10 @@ const Main = () => {
       // const translation = response.translation_text
       // console.log(translation)
 
-      // setMessageLog((prev) => [
-      //   ...prev,
-      //   { id: nanoid(), message: translation, type: "bot", isDisplayed: false },
-      // ])
+      setMessageLog((prev) => [
+        ...prev,
+        { id: nanoid(), message: translation, type: "bot", isDisplayed: false },
+      ])
     } catch (error) {
       console.log(error)
     }
