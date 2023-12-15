@@ -3,7 +3,8 @@ import { HfInference } from "@huggingface/inference"
 const hf = new HfInference(process.env.HF_TOKEN || "")
 
 const handler = async (event) => {
-  return JSON.parse(event.body)
+  const data = JSON.parse(event.body)
+  return JSON.stringify(data)
   // try {
   //   const response = await hf.translation({
   //     model: "facebook/mbart-large-50-many-to-many-mmt",
