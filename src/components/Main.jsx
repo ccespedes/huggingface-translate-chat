@@ -53,8 +53,8 @@ const Main = () => {
         },
         body: JSON.stringify(content),
       })
-      const data = await response.json()
-      console.log(data)
+      const translation = await response.json()
+      console.log(translation)
 
       // const response = await hf.translation({
       //   model: "facebook/mbart-large-50-many-to-many-mmt",
