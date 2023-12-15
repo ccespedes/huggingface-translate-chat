@@ -7,7 +7,8 @@ import japaneseFlag from "../assets/jpn-flag.png"
 import sendBtn from "../assets/send-btn.svg"
 import MessageBubble from "./MessageBubble"
 
-const hf = new HfInference(import.meta.env.VITE_HF_TOKEN)
+// const hf = new HfInference(import.meta.env.VITE_HF_TOKEN || "")
+const hf = new HfInference(process.env.HF_TOKEN || "")
 
 const Main = () => {
   const [formData, setFormData] = useState({
@@ -61,8 +62,6 @@ const Main = () => {
       console.log(error)
     }
   }
-
-  //   console.log('main rendered')
 
   const scrollTop = () => {
     const messageContainer = messageContainerRef.current
