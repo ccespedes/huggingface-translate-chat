@@ -44,9 +44,9 @@ const Main = () => {
     const content = { text, language }
     console.log(content)
     messageDisplayed()
+    const url =
+      "https://hf-translate-chat.netlify.app/.netlify/functions/fetchHF"
     try {
-      const url =
-        "https://hf-translate-chat.netlify.app/.netlify/functions/fetchHF"
       const response = await fetch(url, {
         method: "POST",
         headers: {
