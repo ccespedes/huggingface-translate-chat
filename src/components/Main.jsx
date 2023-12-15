@@ -1,6 +1,6 @@
 import React, { useState, useRef, useMemo } from "react"
 import { nanoid } from "nanoid"
-import { HfInference } from "@huggingface/inference"
+// import { HfInference } from "@huggingface/inference"
 import frenchFlag from "../assets/fr-flag.png"
 import spanishFlag from "../assets/sp-flag.png"
 import japaneseFlag from "../assets/jpn-flag.png"
@@ -8,7 +8,7 @@ import sendBtn from "../assets/send-btn.svg"
 import MessageBubble from "./MessageBubble"
 
 // const hf = new HfInference(import.meta.env.VITE_HF_TOKEN || "")
-const hf = new HfInference(process.env.HF_TOKEN || "")
+// const hf = new HfInference(process.env.HF_TOKEN || "")
 
 const Main = () => {
   const [formData, setFormData] = useState({
@@ -41,23 +41,36 @@ const Main = () => {
   }
 
   async function fetchReply(text, language) {
+    const content = { text, language }
+    console.log(content)
     messageDisplayed()
     try {
-      const response = await hf.translation({
-        model: "facebook/mbart-large-50-many-to-many-mmt",
-        inputs: text,
-        parameters: {
-          src_lang: "en_XX",
-          tgt_lang: language,
+      const url =
+        "https://hf-translate-chat.netlify.app/.netlify/functions/fetchHF"
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain",
         },
+        body: JSON.stringify(content),
       })
-      const translation = response.translation_text
-      console.log(translation)
+      const data = await response.json()
+      console.log(data)
+      // const response = await hf.translation({
+      //   model: "facebook/mbart-large-50-many-to-many-mmt",
+      //   inputs: text,
+      //   parameters: {
+      //     src_lang: "en_XX",
+      //     tgt_lang: language,
+      //   },
+      // })
+      // const translation = response.translation_text
+      // console.log(translation)
 
-      setMessageLog((prev) => [
-        ...prev,
-        { id: nanoid(), message: translation, type: "bot", isDisplayed: false },
-      ])
+      // setMessageLog((prev) => [
+      //   ...prev,
+      //   { id: nanoid(), message: translation, type: "bot", isDisplayed: false },
+      // ])
     } catch (error) {
       console.log(error)
     }
