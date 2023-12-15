@@ -54,7 +54,7 @@ const Main = () => {
         body: JSON.stringify(content),
       })
       const translation = await response.json()
-      console.log(translation)
+      console.log(translation.translation_text)
 
       // const response = await hf.translation({
       //   model: "facebook/mbart-large-50-many-to-many-mmt",
@@ -69,7 +69,12 @@ const Main = () => {
 
       setMessageLog((prev) => [
         ...prev,
-        { id: nanoid(), message: translation, type: "bot", isDisplayed: false },
+        {
+          id: nanoid(),
+          message: translation.translation_text,
+          type: "bot",
+          isDisplayed: false,
+        },
       ])
     } catch (error) {
       console.log(error)
