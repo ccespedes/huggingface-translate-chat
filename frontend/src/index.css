@@ -34,7 +34,7 @@ body {
 }
 
 svg {
-  fill: '#9064ff';
+  fill: "#9064ff";
   stroke-width: 5;
 }
 
@@ -55,17 +55,16 @@ button:hover {
   width: 100%;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
-  font-size: 1.325em;
-  font-weight: 800;
+  font-size: 1em;
+  font-weight: 600;
   font-family: inherit;
-  background-color: var(--primary);
+  text-align: center;
+  background-color: #262626;
   cursor: pointer;
   margin-top: 0.5em;
-  transition: filter 300ms;
 }
 .close-btn:hover {
-  border-color: #ffffff19;
-  filter: drop-shadow(0 0 1em #9064ff41);
+  background-color: #111111;
 }
 .close-btn:focus,
 .close-btn:focus-visible {
@@ -79,7 +78,7 @@ header {
   justify-content: center;
   width: 390px;
   height: 210px;
-  background-image: url('./assets/worldmap.png');
+  background-image: url("./assets/worldmap.png");
   background-position: 60%;
   border-radius: 20px 20px 0 0;
 }
@@ -230,14 +229,14 @@ form {
   justify-content: space-around;
 }
 
-[type='radio'] {
+[type="radio"] {
   position: absolute;
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-[type='radio'] + img {
+[type="radio"] + img {
   outline: 2px solid transparent;
   opacity: 60%;
   cursor: pointer;
@@ -245,7 +244,7 @@ form {
   height: 40px;
 }
 
-[type='radio']:checked + img {
+[type="radio"]:checked + img {
   outline: 2px solid var(--secondary);
   padding: 0.4em;
   opacity: 1;
@@ -266,7 +265,7 @@ form {
 }
 
 .blinking-cursor::after {
-  content: '|';
+  content: "|";
   font-weight: 700;
   display: inline-block;
   animation: cursor-blink 0.5s steps(2) infinite;
@@ -280,7 +279,27 @@ form {
 }
 
 .error {
-  background: #f7002f;
+  background: #982239;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 390px;
+  height: 200px;
+  margin: auto;
+  z-index: 2;
+}
+
+.modal-cover {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: #120f0ee0;
+  /* display: none; */
 }
 
 .mb {
