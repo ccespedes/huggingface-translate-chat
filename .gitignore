@@ -1,8 +1,13 @@
-/dev-backend
-/prod-backend
+/dev-backend/.env
+/dev-backend/node_modules
+
+/prod-backend/node_modules
+/prod-backend/dist
+
 /frontend/.env
 /frontend/node_modules
 /frontend/package-lock.json
+
 .DS_STORE
 # Local Netlify folder
 .netlify
